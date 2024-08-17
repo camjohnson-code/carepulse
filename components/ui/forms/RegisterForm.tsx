@@ -54,12 +54,12 @@ const RegisterForm = ({ user }: { user: User }) => {
           <h1 className='header'>Welcome! 👋</h1>
           <p className='text-dark-700'>Let us know more about you.</p>
         </section>
+
         <section className='space-y-6'>
           <div className='mb-9 space-y-1'>
             <h2 className='sub-header'>Personal Information</h2>
           </div>
         </section>
-
         <CustomFormField
           fieldType={FormFieldType.INPUT}
           control={form.control}
@@ -68,7 +68,6 @@ const RegisterForm = ({ user }: { user: User }) => {
           iconSrc='/assets/icons/user.svg'
           iconAlt='User icon'
         />
-
         <div className='flex flex-col gap-6 xl:flex-row'>
           <CustomFormField
             fieldType={FormFieldType.INPUT}
@@ -121,7 +120,38 @@ const RegisterForm = ({ user }: { user: User }) => {
             }}
           />
         </div>
-
+        <div className='flex flex-col gap-6 xl:flex-row'>
+          <CustomFormField
+            fieldType={FormFieldType.INPUT}
+            control={form.control}
+            name='address'
+            label='Address'
+            placeholder='123 Mulberry Lane, Denver, CO 80202'
+          />
+          <CustomFormField
+            fieldType={FormFieldType.INPUT}
+            control={form.control}
+            name='occupation'
+            label='Occupation'
+            placeholder='Software Engineer'
+          />
+        </div>
+        <div className='flex flex-col gap-6 xl:flex-row'>
+          <CustomFormField
+            fieldType={FormFieldType.INPUT}
+            control={form.control}
+            name='emergencyContactName'
+            label='Emergency Contact Name'
+            placeholder="Guardian's name"
+          />
+          <CustomFormField
+            fieldType={FormFieldType.PHONE_INPUT}
+            control={form.control}
+            name='emergencyContactNumber'
+            label='Emergency Contact Number'
+            placeholder='(123) 456-7890'
+          />
+        </div>
         <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
       </form>
     </Form>
