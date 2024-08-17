@@ -18,6 +18,7 @@ export enum FormFieldType {
   DATE_PICKER = 'datePicker',
   SKELETON = 'skeleton',
   SELECT = 'select',
+  TEXTAREA = 'textarea',
 }
 
 const PatientForm = () => {
