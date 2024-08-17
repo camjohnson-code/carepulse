@@ -4,16 +4,14 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { Button } from '@/components/ui/button';
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
+import { Form } from '@/components/ui/form';
+import CustomFormField from '@/components/CustomFormField';
+
+export enum FormFieldType {
+  INPUT = 'input',
+  PHONE_INPUT = 'phoneInput',
+  CHECKBOX = 'checkbox',
+}
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -45,22 +43,32 @@ const PatientForm = () => {
           <p className='text-dark-700'>Schedule your next appointment.</p>
         </section>
 
-        <FormField
+        <CustomFormField
+          fieldType={FormFieldType.INPUT}
           control={form.control}
-          name='username'
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Username</FormLabel>
-              <FormControl>
-                <Input placeholder='shadcn' {...field} />
-              </FormControl>
-              <FormDescription>
-                This is your public display name.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
+          name='name'
+          label='Full Name'
+          placeholder='John Doe'
+          iconSrc='/assets/icons/user.svg'
+          iconAlt='User icon'
         />
+        <CustomFormField
+          fieldType={FormFieldType.INPUT}
+          control={form.control}
+          name='email'
+          label='Email'
+          placeholder='john@doe.com'
+          iconSrc='/assets/icons/email.svg'
+          iconAlt='Email icon'
+        />
+        <CustomFormField
+          fieldType={FormFieldType.PHONE_INPUT}
+          control={form.control}
+          name='phone'
+          label='Phone Number'
+          placeholder='(123) 456-7890'
+        />
+
         <Button type='submit'>Submit</Button>
       </form>
     </Form>
