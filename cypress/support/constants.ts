@@ -20,10 +20,10 @@ export const MESSAGES = {
   phonePlaceholder: '(123) 456-7890',
   copyright: '© 2024 Care Pulse',
   adminLink: 'Admin',
-  nameError: 'Name must be at least 2 characters.',
+  nameError: 'Name must be at least 2 characters',
   emailError: 'Invalid email address',
   phoneError: 'Invalid phone number',
-  nameMaxError: 'Name must be at most 50 characters.',
+  nameMaxError: 'Name must be at most 50 characters',
   submitButtonLoading: 'Loading...',
   submitButtonDefault: 'Get Started',
 };
