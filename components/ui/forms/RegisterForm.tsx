@@ -7,13 +7,15 @@ import { Form, FormControl } from '@/components/ui/form';
 import CustomFormField from '@/components/CustomFormField';
 import SubmitButton from '@/components/SubmitButton';
 import { useState } from 'react';
+import Image from 'next/image';
 import { UserFormValidation } from '@/lib/validation';
 import { useRouter } from 'next/navigation';
 import { createUser } from '@/lib/actions/patient.actions';
 import { FormFieldType } from './PatientForm';
 import { RadioGroup, RadioGroupItem } from '../radio-group';
-import { GenderOptions } from '@/constants';
+import { Doctors, GenderOptions } from '@/constants';
 import { Label } from '../label';
+import { SelectItem } from '../select';
 
 const RegisterForm = ({ user }: { user: User }) => {
   const router = useRouter();
@@ -150,6 +152,82 @@ const RegisterForm = ({ user }: { user: User }) => {
             name='emergencyContactNumber'
             label='Emergency Contact Number'
             placeholder='(123) 456-7890'
+          />
+        </div>
+
+        <section className='space-y-6'>
+          <div className='mb-9 space-y-1'>
+            <h2 className='sub-header'>Medical Information</h2>
+          </div>
+        </section>
+        <CustomFormField
+          fieldType={FormFieldType.SELECT}
+          control={form.control}
+          name='primaryPhysician'
+          label='Primary Care Physician'
+          placeholder='Select your primary care physician'
+        >
+          {Doctors.map((doctor) => (
+            <SelectItem key={doctor.name} value={doctor.name}>
+              <div className='flex cursor-pointer items-center gap-2'>
+                <Image
+                  src={doctor.image}
+                  height={32}
+                  width={32}
+                  alt={doctor.name}
+                  className='rounded-full border border-dark-500'
+                />
+                <p>{doctor.name}</p>
+              </div>
+            </SelectItem>
+          ))}
+        </CustomFormField>
+        <div className='flex flex-col gap-6 xl:flex-row'>
+          <CustomFormField
+            fieldType={FormFieldType.INPUT}
+            control={form.control}
+            name='insuranceProvider'
+            label='Insurance Provider'
+            placeholder="United Healthcare"
+          />
+          <CustomFormField
+            fieldType={FormFieldType.INPUT}
+            control={form.control}
+            name='insurancePolicyNumber'
+            label='Insurance Policy Number'
+            placeholder='ABC123456789'
+          />
+        </div>
+        <div className='flex flex-col gap-6 xl:flex-row'>
+          <CustomFormField
+            fieldType={FormFieldType.TEXTAREA}
+            control={form.control}
+            name='allergies'
+            label='Allergies (if any)'
+            placeholder="Peanuts, Pennicilin, etc."
+          />
+          <CustomFormField
+            fieldType={FormFieldType.TEXTAREA}
+            control={form.control}
+            name='currentMedication'
+            label='Current Medication (if any)'
+            placeholder='Ibuprofen (200mg), Parcetamol (500mg), etc.'
+          />
+        </div>
+        <div className='flex flex-col gap-6 xl:flex-row'>
+          <CustomFormField
+            fieldType={FormFieldType.TEXTAREA}
+            control={form.control}
+            name='familyMedicalHistory'
+            label='Family Medical History'
+            placeholder="Diabetes, Hypertension, etc."
+          />
+          <CustomFormField
+            fieldType={FormFieldType.TEXTAREA}
+            control={form.control}
+            name='pastMedicalHistory'
+            label='Past Medical History'
+            placeholder='Asthma, Chickenpox, etc.'
           />
         </div>
         <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
