@@ -72,6 +72,6 @@ export const PatientFormValidation = z.object({
     .boolean()
     .default(false)
     .refine((value) => value === true, {
-      message: 'You must consent to privacy in order to proceed',
+      message: 'You must consent to the privacy policy in order to proceed',
     }),
 });
