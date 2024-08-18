@@ -35,13 +35,18 @@ export const SELECTORS = {
   disclosureConsentLabel: 'label[for="disclosureConsent"]',
   privacyConsentCheckbox: 'button[id="privacyConsent"]',
   privacyConsentLabel: 'label[for="privacyConsent"]',
+  timePickerInput: 'input[name="schedule"]',
+  scheduleReasonTextArea: 'textarea[name="reason"]',
+  noteTextArea: 'textarea[name="note"]',
 };
 
 export const MESSAGES = {
   header: 'Hi there! 👋',
   patientRegistrationHeader: 'Welcome! 👋',
+  appointmentHeader: 'New Appointment',
   headerText: 'Schedule your next appointment.',
   patientRegistrationHeaderText: 'Let us know more about you.',
+  appointmentHeaderText: 'Request a new appointment.',
   namePlaceholder: 'John Doe',
   emailPlaceholder: 'john@doe.com',
   phonePlaceholder: '(123) 456-7890',
