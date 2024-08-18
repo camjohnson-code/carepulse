@@ -10,7 +10,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { PatientFormValidation } from '@/lib/validation';
 import { useRouter } from 'next/navigation';
-import { createUser, registerPatient } from '@/lib/actions/patient.actions';
+import { registerPatient } from '@/lib/actions/patient.actions';
 import { FormFieldType } from './PatientForm';
 import { RadioGroup, RadioGroupItem } from '../radio-group';
 import {
@@ -22,7 +22,6 @@ import {
 import { Label } from '../label';
 import { SelectItem } from '../select';
 import FileUploader from '@/components/FileUploader';
-import { register } from 'module';
 
 const RegisterForm = ({ user }: { user: User }) => {
   const router = useRouter();
@@ -61,9 +60,9 @@ const RegisterForm = ({ user }: { user: User }) => {
         identificationDocument: formData,
       };
 
-      //   @ts-ignore
+        // @ts-ignore
       const patient = await registerPatient(patientData);
-      if (patient) router.push(`/patients/${patient.$id}/new-appointment`);
+      if (patient) router.push(`/patients/${patient.userId}/new-appointment`);
     } catch (error) {
       console.log(error);
     }
