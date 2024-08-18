@@ -9,11 +9,16 @@ import SubmitButton from '@/components/SubmitButton';
 import { useState } from 'react';
 import { UserFormValidation } from '@/lib/validation';
 import { useRouter } from 'next/navigation';
+import { createUser } from '@/lib/actions/patient.actions';
 
 export enum FormFieldType {
   INPUT = 'input',
   PHONE_INPUT = 'phoneInput',
   CHECKBOX = 'checkbox',
+  DATE_PICKER = 'datePicker',
+  SKELETON = 'skeleton',
+  SELECT = 'select',
+  TEXTAREA = 'textarea',
 }
 
 const PatientForm = () => {
@@ -37,9 +42,9 @@ const PatientForm = () => {
     setIsLoading(true);
 
     try {
-    //   const userData = { name, email, phone };
-    //   const user = await createUser(userData);
-    //   if (user) router.push(`/patients/${user.$id}/register`);
+      const userData = { name, email, phone };
+      const user = await createUser(userData);
+      if (user) router.push(`/patients/${user.$id}/register`);
     } catch (error) {
       console.log(error);
     }
@@ -50,7 +55,9 @@ const PatientForm = () => {
       <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-6 flex-1'>
         <section className='mb-12 space-y-4'>
           <h1 className='header'>Hi there! 👋</h1>
-          <p className='text-dark-700' data-testid='header-text'>Schedule your next appointment.</p>
+          <p className='text-dark-700' data-testid='header-text'>
+            Schedule your next appointment.
+          </p>
         </section>
 
         <CustomFormField

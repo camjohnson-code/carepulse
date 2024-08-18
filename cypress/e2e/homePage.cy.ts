@@ -1,6 +1,6 @@
 import { SELECTORS, MESSAGES } from '../support/constants';
 
-describe('template spec', () => {
+describe('Home page interaction', () => {
   beforeEach(() => {
     cy.visit('localhost:3000');
   });
@@ -8,12 +8,24 @@ describe('template spec', () => {
   it('sees the items on the page', () => {
     cy.get(SELECTORS.logo).should('exist');
     cy.get(SELECTORS.header).should('exist').and('have.text', MESSAGES.header);
-    cy.get(SELECTORS.headerText).should('exist').and('have.text', MESSAGES.headerText);
-    cy.get(SELECTORS.nameInput).should('exist').and('have.attr', 'placeholder', MESSAGES.namePlaceholder);
-    cy.get(SELECTORS.emailInput).should('exist').and('have.attr', 'placeholder', MESSAGES.emailPlaceholder);
-    cy.get(SELECTORS.phoneInput).should('exist').and('have.attr', 'placeholder', MESSAGES.phonePlaceholder);
-    cy.get(SELECTORS.copyrightText).should('exist').and('have.text', MESSAGES.copyright);
-    cy.get(SELECTORS.adminLink).should('exist').and('have.text', MESSAGES.adminLink);
+    cy.get(SELECTORS.headerText)
+      .should('exist')
+      .and('have.text', MESSAGES.headerText);
+    cy.get(SELECTORS.nameInput)
+      .should('exist')
+      .and('have.attr', 'placeholder', MESSAGES.namePlaceholder);
+    cy.get(SELECTORS.emailInput)
+      .should('exist')
+      .and('have.attr', 'placeholder', MESSAGES.emailPlaceholder);
+    cy.get(SELECTORS.phoneInput)
+      .should('exist')
+      .and('have.attr', 'placeholder', MESSAGES.phonePlaceholder);
+    cy.get(SELECTORS.copyrightText)
+      .should('exist')
+      .and('have.text', MESSAGES.copyright);
+    cy.get(SELECTORS.adminLink)
+      .should('exist')
+      .and('have.text', MESSAGES.adminLink);
     cy.get(SELECTORS.heroImage).should('exist');
   });
 
