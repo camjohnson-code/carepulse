@@ -38,6 +38,12 @@ export const SELECTORS = {
   timePickerInput: 'input[name="schedule"]',
   scheduleReasonTextArea: 'textarea[name="reason"]',
   noteTextArea: 'textarea[name="note"]',
+  otpHeader: 'h2#radix-\\:r1\\:',
+  otpMessage: 'p#radix-\\:r2\\:',
+  closeButton: 'img[alt="Close button"]',
+  passKeyInput: 'input[inputmode="numeric"]',
+  enterPassKeyButton: 'button[type="button"]',
+  passKeyError: 'p.shad-error',
 };
 
 export const MESSAGES = {
@@ -68,4 +74,5 @@ export const MESSAGES = {
   submitButtonLoading: 'Loading...',
   submitButtonDefault: 'Get Started',
   submitButtonRegistration: 'Submit and continue',
+  passKeyErrorMessage: 'Incorrect passkey. Please try again.',
 };
