@@ -6,16 +6,9 @@ import { formatDateTime } from '@/lib/utils';
 import { Doctors } from '@/constants';
 import Image from 'next/image';
 import AppointmentModal from '../AppointmentModal';
+import { Appointment } from '@/types/appwrite.types';
 
-export type Payment = {
-  patient: any;
-  id: string;
-  amount: number;
-  status: 'pending' | 'scheduled' | 'cancelled';
-  email: string;
-};
-
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<Appointment>[] = [
   {
     header: 'ID',
     cell: ({ row }) => {
@@ -58,8 +51,8 @@ export const columns: ColumnDef<Payment>[] = [
       return (
         <div className='flex items-center gap-3'>
           <Image
-            src={doctor?.image}
-            alt={doctor?.name}
+            src={doctor?.image || ''}
+            alt={doctor?.name || ''}
             width={100}
             height={100}
             className='size-8'
