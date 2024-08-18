@@ -44,15 +44,24 @@ export const SELECTORS = {
   passKeyInput: 'input[inputmode="numeric"]',
   enterPassKeyButton: 'button[type="button"]',
   passKeyError: 'p.shad-error',
+  adminDashboardText: 'p[data-testid="admin-dashboard-subheader"',
+  scheduledAppointmentCard: 'div.bg-appointments',
+  pendingAppointmentCard: 'div.bg-pending',
+  cancelledAppointmentCard: 'div.bg-cancelled',
+  dashboardTable: 'table.shad-table',
+  paginationButtonDiv: 'div.table-actions'
+  
 };
 
 export const MESSAGES = {
   header: 'Hi there! 👋',
   patientRegistrationHeader: 'Welcome! 👋',
+  adminDashboardHeader: 'Welcome 👋',
   appointmentHeader: 'New Appointment',
   headerText: 'Schedule your next appointment.',
   patientRegistrationHeaderText: 'Let us know more about you.',
   appointmentHeaderText: 'Request a new appointment.',
+  adminDashboardHeaderText: 'Start the day with managing new appointments',
   namePlaceholder: 'John Doe',
   emailPlaceholder: 'john@doe.com',
   phonePlaceholder: '(123) 456-7890',
