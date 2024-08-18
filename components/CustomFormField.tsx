@@ -76,6 +76,7 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
       return (
         <FormControl>
           <PhoneInput
+            name={props.name}
             defaultCountry='US'
             placeholder={placeholder}
             international
@@ -100,6 +101,7 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
           <FormControl>
             <DatePicker
               selected={field.value}
+              name={props.name}
               onChange={(date) => field.onChange(date)}
               dateFormat={dateFormat ?? 'MM/dd/yyyy'}
               showTimeSelect={showTimeSelect ?? false}
@@ -116,9 +118,9 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
     case FormFieldType.SELECT:
       return (
         <FormControl>
-          <Select onValueChange={field.onChange} defaultValue={field.value}>
+          <Select data-testid="select-option" onValueChange={field.onChange} defaultValue={field.value}>
             <FormControl>
-              <SelectTrigger className='shad-select-trigger'>
+              <SelectTrigger className='shad-select-trigger' name={props.name}>
                 <SelectValue placeholder={placeholder} />
               </SelectTrigger>
             </FormControl>
@@ -147,6 +149,7 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
           <div className='flex items-center gap-4'>
             <Checkbox
               id={props.name}
+              name={props.name}
               checked={field.value}
               onCheckedChange={field.onChange}
             />
