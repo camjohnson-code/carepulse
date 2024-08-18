@@ -77,12 +77,12 @@ const RegisterForm = ({ user }: { user: User }) => {
       >
         <section className='space-y-4'>
           <h1 className='header'>Welcome! 👋</h1>
-          <p className='text-dark-700'>Let us know more about you.</p>
+          <p className='text-dark-700' data-testid="header-p-text">Let us know more about you.</p>
         </section>
 
         <section className='space-y-6'>
           <div className='mb-9 space-y-1'>
-            <h2 className='sub-header'>Personal Information</h2>
+            <h2 className='sub-header' data-testid="personal-info-title">Personal Information</h2>
           </div>
         </section>
         <CustomFormField
@@ -130,6 +130,7 @@ const RegisterForm = ({ user }: { user: User }) => {
                     className='flex h-11 gap-6 xl:justify-between'
                     onValueChange={field.onChange}
                     defaultValue={field.value}
+                    data-testid="radio-group-div"
                   >
                     {GenderOptions.map((option) => (
                       <div key={option} className='radio-group'>
@@ -180,7 +181,7 @@ const RegisterForm = ({ user }: { user: User }) => {
 
         <section className='space-y-6'>
           <div className='mb-9 space-y-1'>
-            <h2 className='sub-header'>Medical Information</h2>
+            <h2 className='sub-header' data-testid="medical-info-title">Medical Information</h2>
           </div>
         </section>
         <CustomFormField
@@ -227,7 +228,7 @@ const RegisterForm = ({ user }: { user: User }) => {
             control={form.control}
             name='allergies'
             label='Allergies (if any)'
-            placeholder='Peanuts, Pennicilin, etc.'
+            placeholder='Peanuts, Penicillin, etc.'
           />
           <CustomFormField
             fieldType={FormFieldType.TEXTAREA}
@@ -292,7 +293,7 @@ const RegisterForm = ({ user }: { user: User }) => {
         />
         <section className='space-y-6'>
           <div className='mb-9 space-y-1'>
-            <h2 className='sub-header'>Consent and Privacy</h2>
+            <h2 className='sub-header' data-testid="consent-title">Consent and Privacy</h2>
           </div>
         </section>
         <CustomFormField
