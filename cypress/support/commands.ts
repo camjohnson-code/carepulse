@@ -7,10 +7,10 @@ declare namespace Cypress {
 Cypress.Commands.add(
   'fillForm',
   { prevSubject: false },
-  (name, email, phone) => {
-    cy.get('input[name="name"]').clear().type(name);
-    cy.get('input[name="email"]').clear().type(email);
-    cy.get('input[type="tel"]').clear().type(phone);
+  (name: string, email: string, phone: string) => {
+    cy.get('input[name="name"]').clear({force: true}).type(name);
+    cy.get('input[name="email"]').clear({force: true}).type(email);
+    cy.get('input[type="tel"]').clear({force: true}).type(phone);
   }
 );
 
