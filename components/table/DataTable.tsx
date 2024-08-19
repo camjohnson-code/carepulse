@@ -21,13 +21,11 @@ import Image from 'next/image';
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
-  loading: boolean;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
-  loading,
 }: DataTableProps<TData, TValue>) {
   const table = useReactTable({
     data,
@@ -36,11 +34,9 @@ export function DataTable<TData, TValue>({
     getPaginationRowModel: getPaginationRowModel(),
   });
 
-  const middleColumnIndex = Math.floor(columns.length / 2);
-
   return (
-    <div className='data-table w-full'>
-      <Table className='shad-table w-full'>
+    <div className='data-table'>
+      <Table className='shad-table'>
         <TableHeader className='bg-dark-200'>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id} className='shad-table-row-header'>
@@ -60,30 +56,7 @@ export function DataTable<TData, TValue>({
           ))}
         </TableHeader>
         <TableBody>
-          {loading ? (
-            <TableRow>
-              {columns.map((_, index) => (
-                <TableCell
-                  key={index}
-                  className={`${
-                    index === middleColumnIndex
-                      ? 'flex items-center justify-center'
-                      : ''
-                  }`}
-                >
-                  {index === middleColumnIndex && (
-                    <Image
-                      src='/assets/icons/loader.svg'
-                      width={24}
-                      height={24}
-                      alt='Loading'
-                      className='animate-spin'
-                    />
-                  )}
-                </TableCell>
-              ))}
-            </TableRow>
-          ) : table.getRowModel().rows?.length ? (
+          {table.getRowModel().rows?.length ? (
             table.getRowModel().rows.map((row) => (
               <TableRow
                 key={row.id}
